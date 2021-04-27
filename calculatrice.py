@@ -7,19 +7,16 @@ def addition(number):
     while number.isdigit():
         if number.isdigit():
             list_numbers.append(int(number))
-        number = ask_user("Saisir un chiffre à additionner ou saisir '=' ")
-
+        number = ask_user("Saisir un chiffre à ADDITIONNER ou saisir '=' ")
     result = sum(list_numbers)
     return result
 
-def multiplication(number):
+def multplication(number):
     list_numbers = []
     while number.isdigit():
         if number.isdigit():
             list_numbers.append(int(number))
-
-        number = ask_user("Saisir un ciffre à multiplier ou clicker sur '=' ")
-
+        number = ask_user("Saisir un chiffre à MULTIPLIER ou saisir '=' ")
     for list_number, index in zip(list_numbers,list(range(len(list_numbers)))): # refactoriser
         if index == 0:
             result = list_number
@@ -32,22 +29,22 @@ def division(number):
     while number.isdigit():
         if number.isdigit():
             list_numbers.append(int(number))
-        number = ask_user("Saisir un ciffre à multiplier ou clicker sur '=' ")
+        number = ask_user("Saisir un chiffre à DIVISER ou saisir '=' ")
     for list_number, index in zip(list_numbers,list(range(len(list_numbers)))): # refactoriser
         if index == 0:
             result = list_number
-        elif list_number!=0:
-            result = result / list_number
+        elif list_number != 0:
+                result = result / list_number
         else:
-            print('Tu divises par 0 toi ?!')
+                result = 'La division par zero est impossible'
+    return result
 
 def soustraction(number):
     list_numbers = []
     while number.isdigit():
         if number.isdigit():
             list_numbers.append(int(number))
-        number = ask_user("Saisir un ciffre à additionner ou clicker sur '=' ")
-
+        number = ask_user("Saisir un chiffre à SOUSTRAIRE ou saisir '=' ")
     i = 0
     for list_number in list_numbers:
         if i == 0:
@@ -57,14 +54,10 @@ def soustraction(number):
         i = i + 1
     return result
 
-
 def display_interface():
-
-    i=True
-    while i :
-
-
-
+    a = True
+    while a:
+        
         choice = ask_user("""
         Tu veux :
         1. Additionner Tape 1
@@ -72,6 +65,7 @@ def display_interface():
         3. Multiplier Tape 3
         4. Diviser Tape 4
         5. Quitter""")
+
 
         choice = int(choice)
         if choice == 1:
@@ -86,13 +80,10 @@ def display_interface():
         elif choice == 4:
             choice = ask_user("Saisir un chiffre à DIVISER ou saisir '=' ")
             result = division(choice)
-
         elif choice == 5:
             print("Au revoir")
             break
 
         print(f"Le resultat est ==> {result}")
-
-
-
+        
 
