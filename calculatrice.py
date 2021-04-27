@@ -1,86 +1,11 @@
-
-def ask_user(sentence = "Saisir un chiffre"):
-    choice = input(f"""{sentence}\n>""")
-    return choice
-
-def addition(number):
-    list_numbers = []
-    while number.isdigit():
-        if number.isdigit():
-            list_numbers.append(int(number))
-        number = ask_user("Saisir un chiffre à ADDITIONNER ou saisir '=' ")
-        
-        while not number.isdigit() and number != "=":
-            print("c'est pas ce qu'on t'as demandé")
-            number = ask_user("Saisir un chiffre à ADDITIONNER ou saisir '=' ")
-
-    result = sum(list_numbers)
-    return result
-
-
-def multplication(number):
-    list_numbers = []
-    while number.isdigit():
-        if number.isdigit():
-            list_numbers.append(int(number))
-        number = ask_user("Saisir un chiffre à MULTIPLIER ou saisir '=' ")
-
-        while not number.isdigit() and number != "=":
-            print("c'est pas ce qu'on t'as demandé")
-            number = ask_user("Saisir un chiffre à MULTIPLIER ou saisir '=' ")
-
-    for index, list_number in enumerate(list_numbers):
-        if index == 0:
-            result = list_number
-        else:
-            result = result * list_number
-    return result
-
-def division(number):
-    list_numbers = []
-    while number.isdigit():
-        if number.isdigit():
-            list_numbers.append(int(number))
-        number = ask_user("Saisir un chiffre à DIVISER ou saisir '=' ")
-
-        while not number.isdigit() and number != "=":
-            print("c'est pas ce qu'on t'as demandé")
-            number = ask_user("Saisir un chiffre à DIVISER ou saisir '=' ")
-
-    for index, list_number in enumerate(list_numbers):
-        if index == 0:
-            result = list_number
-        elif list_number != 0:
-                result = result / list_number
-        else:
-                result = 'La division par zero est impossible'
-    return result
-
-def soustraction(number):
-    list_numbers = []
-    while number.isdigit():
-        if number.isdigit():
-            list_numbers.append(int(number))
-        number = ask_user("Saisir un chiffre à SOUSTRAIRE ou saisir '=' ")
-
-        while not number.isdigit() and number != "=":
-            print("c'est pas ce qu'on t'as demandé")
-            number = ask_user("Saisir un chiffre à SOUSTRAIRE ou saisir '=' ")
-
-    i = 0
-    for list_number in list_numbers:
-        if i == 0:
-            result = list_number
-        else:
-            result = result - list_number
-        i = i + 1
-    return result
+from calculate import Calculate
 
 def display_interface():
+    tx = Calculate()
     a = True
     while a:
         
-        choice = ask_user("""
+        choice = tx.ask_user("""
         Tu veux :
         1. Additionner Tape 1
         2. Soustraire Tape 2
@@ -92,17 +17,17 @@ def display_interface():
         try:
             choice = int(choice)
             if choice == 1:
-                choice = ask_user("Saisir un chiffre à ADDITIONNER ou saisir '=' ")
-                result = addition(choice)
+                choice = tx.ask_user("Saisir un chiffre à ADDITIONNER ou saisir '=' ")
+                result = tx.addition(choice)
             elif choice == 2:
-                choice = ask_user("Saisir un chiffre à SOUSTRAIRE ou saisir '=' ")
-                result = soustraction(choice)
+                choice = tx.ask_user("Saisir un chiffre à SOUSTRAIRE ou saisir '=' ")
+                result = tx.soustraction(choice)
             elif choice == 3:
-                choice = ask_user("Saisir un chiffre à MULTIPLIER ou saisir '=' ")
-                result = multplication(choice)
+                choice = tx.ask_user("Saisir un chiffre à MULTIPLIER ou saisir '=' ")
+                result = tx.multplication(choice)
             elif choice == 4:
-                choice = ask_user("Saisir un chiffre à DIVISER ou saisir '=' ")
-                result = division(choice)
+                choice = tx.ask_user("Saisir un chiffre à DIVISER ou saisir '=' ")
+                result = tx.division(choice)
             elif choice == 5:
                 print("Au revoir")
                 break
