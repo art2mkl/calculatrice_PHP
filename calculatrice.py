@@ -1,7 +1,11 @@
 from calculate import Calculate
 
 def display_interface():
+    
+    # instanciation
     tx = Calculate()
+    
+    # Boucle a
     a = True
     while a:
         
